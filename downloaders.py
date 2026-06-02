@@ -10,11 +10,15 @@ import os
 import sys
 import re
 import requests
+import subprocess
 import syncedlyrics
 import yt_dlp
 from mutagen.easyid3 import EasyID3
 from mutagen.id3 import ID3, APIC, USLT
 from ytmusicapi import YTMusic
+
+# System detection framework
+is_termux = "termux" in sys.prefix or os.path.exists("/data/data/com.termux")
 
 # Init YT Music
 yt = YTMusic()
@@ -32,10 +36,10 @@ def check_system():
 
     # Check if running in Android or Termux
     if "termux" in sys.prefix or os.path.exists(os.path.join(home_dir, "storage")):
-        download_path = os.path.join(home_dir, "storage", "shared", "Download")
+        download_path = os.path.join(home_dir, "storage", "shared", "Music", APP_NAME)
     else:
         # Otherwise return Ubuntu or Windows path
-        download_path = os.path.join(home_dir, "Downloads", APP_NAME)
+        download_path = os.path.join(home_dir, "Music", APP_NAME)
 
     # Ensure the download path exists
     if not os.path.exists(download_path):
@@ -174,6 +178,13 @@ def download_songs(songs,target_download_folder):
             audio.save()
         except Exception as e:
             print(f"Advanced ID3 Tagginf Error: {e}")
+
+    # Update media index if running Androiid/Termux
+    try:
+        if is_termux:
+            subprocess.run(["termux-media-scan", os.path.join(home_dir, "storage", "shared", "Music")])
+    except Exception as e:
+        print("Android media indexing failed.")
     
     print(f"\nAll downloads completed successfully!")
 
