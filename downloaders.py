@@ -32,7 +32,7 @@ def check_system():
 
     # Check if running in Android or Termux
     if "termux" in sys.prefix or os.path.exists(os.path.join(home_dir, "storage")):
-        download_path = os.path.join(home_dir, "storage", "shared", "Downloads", APP_NAME)
+        download_path = os.path.join(home_dir, "storage", "shared", "Download", APP_NAME)
     else:
         # Otherwise return Ubuntu or Windows path
         download_path = os.path.join(home_dir, "Downloads", APP_NAME)
