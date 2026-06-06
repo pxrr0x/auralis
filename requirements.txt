@@ -2,3 +2,4 @@ ytmusicapi>=1.1.0
 yt-dlp>=2025.01.01
 syncedlyrics>=0.3.0
 mutagen>=1.47.0
+requests>=2.34.2
