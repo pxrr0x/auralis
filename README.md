@@ -36,8 +36,8 @@
 
 1. Run the script :>
 
-### Video Tutorial
-<a href="https://youtu.be/5aHGTncNcyc?si=LXb1enc9I-pTRvF7">auralis Download, Installation & Usage</a>
+### Video Demo
+<a href="https://youtu.be/k62VBI9qfgo">auralis Demo</a>
 <br/>
 
 ### Features
