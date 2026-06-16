@@ -37,7 +37,7 @@
 1. Run the script :>
 
 ### Video Demo
-<a href="https://youtu.be/k62VBI9qfgo">auralis Demo</a>
+<a href="">auralis Demo 06.18</a>
 <br/>
 
 ### Features
